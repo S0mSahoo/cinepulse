@@ -25,7 +25,7 @@ export default function MovieDetails() {
             </div>
             <div className='container info'>
                 <h1>{movie.title}</h1>
-                <p>When his family is murdered, a deaf-mute named Boy escapes to the jungle and is trained by a mysterious shaman to repress his childish imagination and become an instrument of death.</p>
+                <p>{movie.overview}</p>
                 <div className="genre-list">
                     {movie.genres ? (
                             movie.genres.map((genre) => (
