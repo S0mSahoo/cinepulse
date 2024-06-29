@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/cinepulse/static/css/main.b9816891.css",
-    "main.js": "/cinepulse/static/js/main.185b9c72.js",
+    "main.js": "/cinepulse/static/js/main.f50c5269.js",
     "static/js/453.7f91a49e.chunk.js": "/cinepulse/static/js/453.7f91a49e.chunk.js",
     "static/media/backup.png": "/cinepulse/static/media/backup.4618793166f39aa1ff3d.png",
     "static/media/pagenotfound.png": "/cinepulse/static/media/pagenotfound.28f3aa27eae97df57582.png",
     "static/media/logo.png": "/cinepulse/static/media/logo.c19e45328bfc4798e60b.png",
     "index.html": "/cinepulse/index.html",
     "main.b9816891.css.map": "/cinepulse/static/css/main.b9816891.css.map",
-    "main.185b9c72.js.map": "/cinepulse/static/js/main.185b9c72.js.map",
+    "main.f50c5269.js.map": "/cinepulse/static/js/main.f50c5269.js.map",
     "453.7f91a49e.chunk.js.map": "/cinepulse/static/js/453.7f91a49e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b9816891.css",
-    "static/js/main.185b9c72.js"
+    "static/js/main.f50c5269.js"
   ]
 }
