@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import MovieCard from './MovieCard/MovieCard';
 import Backup from '../Assets/backup.png'
+import { PacmanLoader } from 'react-spinners';
 export default function Movies(props) {
     const [movie, setMovie] = useState({
         page: 1,
@@ -9,31 +10,53 @@ export default function Movies(props) {
         totalPages: 0,
         totalResults: 0
     });
+    const [loading, setLoading] = useState(false)
     let url = `https://api.themoviedb.org/3/movie/${props.title}?api_key=5ffaf87388ee32670247f16ebc9a2b16&page=${movie.page}`
+    const getMovie = async (url) => {
+        let data = await fetch(url);
+        setLoading(true)
+        document.getElementById('r').classList.toggle('opacity-50')
+        let parsedData = await data.json();
+        setMovie({
+            page: parsedData['page'],
+            results: parsedData['results'],
+            totalPages: parsedData['total_pages'],
+            totalResults: parsedData['total_results'],
+        })
+        setLoading(false)
+        document.getElementById('r').classList.toggle('opacity-50')
+    }
     useEffect(() => {
         async function fetchMovie() {
             // console.log(url);
-            let data = await fetch(url);
-            let parsedData = await data.json();
-            setMovie(parsedData)
-            // console.log(parsedData)
+            getMovie(url)
         } fetchMovie();
     }, [url])
     let toPrevious = async () => {
-        let url_page = `https://api.themoviedb.org/3/movie/${props.title}?api_key=5ffaf87388ee32670247f16ebc9a2b16&page=${movie.page-1}`
-        let data = await fetch(url_page);
-        let parsedData = await data.json();
-        setMovie(parsedData)
+        let url_page = `https://api.themoviedb.org/3/movie/${props.title}?api_key=5ffaf87388ee32670247f16ebc9a2b16&page=${movie.page - 1}`
+        getMovie(url_page)
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
     }
     let toNext = async () => {
-        let url_page = `https://api.themoviedb.org/3/movie/${props.title}?api_key=5ffaf87388ee32670247f16ebc9a2b16&page=${movie.page+1}`
-        let data = await fetch(url_page);
-        let parsedData = await data.json();
-        setMovie(parsedData)
+        let url_page = `https://api.themoviedb.org/3/movie/${props.title}?api_key=5ffaf87388ee32670247f16ebc9a2b16&page=${movie.page + 1}`
+        getMovie(url_page)
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
     }
     return (
-        <div className="container flex-column">
-            <div className="row">
+        <div className="container flex-column" style={{ gap: 0 }}>
+            {
+                loading &&
+                <div className="container text-center my-4">
+                    <PacmanLoader color={props.color === 'success' ? '#dee2e6' : '#000'} />
+                </div>
+            }
+            <div id='r' className="row">
                 {movie.results.map((element) => {
                     return (
                         <div className="col-lg-3 col-md-6 col-sm-6" key={element.id}>

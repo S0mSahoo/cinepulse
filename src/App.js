@@ -28,7 +28,7 @@ export default function App() {
         }
     }
     return (
-        <Router>
+        <Router basename='/cinepulse'>
             <div>
                 <Navbar theme={toDark} color={color} />
                 <Routes>
